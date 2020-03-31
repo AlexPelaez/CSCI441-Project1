@@ -5,7 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c" "/Users/ethanmiller/desktop/CSCI441/Project1/proj1/build/CMakeFiles/proj1.dir/Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.o"
+  "/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c" "/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build/CMakeFiles/proj1.dir/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
@@ -15,10 +15,10 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "../../deps/glad/include"
   "../../deps/csci441/include"
   "../../deps/glm"
-  "/Users/ethanmiller/desktop/CSCI441/Project1/deps/glfw/include"
+  "/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glfw/include"
   )
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/ethanmiller/desktop/CSCI441/Project1/proj1/main.cpp" "/Users/ethanmiller/desktop/CSCI441/Project1/proj1/build/CMakeFiles/proj1.dir/main.cpp.o"
+  "/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/main.cpp" "/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build/CMakeFiles/proj1.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
@@ -28,12 +28,12 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../../deps/glad/include"
   "../../deps/csci441/include"
   "../../deps/glm"
-  "/Users/ethanmiller/desktop/CSCI441/Project1/deps/glfw/include"
+  "/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glfw/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/ethanmiller/desktop/CSCI441/Project1/proj1/build/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
+  "/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build/glfw/src/CMakeFiles/glfw.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

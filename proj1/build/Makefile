@@ -48,10 +48,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ethanmiller/desktop/CSCI441/Project1/proj1
+CMAKE_SOURCE_DIR = /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ethanmiller/desktop/CSCI441/Project1/proj1/build
+CMAKE_BINARY_DIR = /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,9 +126,9 @@ list_install_components/fast: list_install_components
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ethanmiller/desktop/CSCI441/Project1/proj1/build/CMakeFiles /Users/ethanmiller/desktop/CSCI441/Project1/proj1/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build/CMakeFiles /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ethanmiller/desktop/CSCI441/Project1/proj1/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -195,32 +195,32 @@ glfw/fast:
 	$(MAKE) -f glfw/src/CMakeFiles/glfw.dir/build.make glfw/src/CMakeFiles/glfw.dir/build
 .PHONY : glfw/fast
 
-Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.o: Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.o
+Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.o: Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.o
 
-.PHONY : Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.o
+.PHONY : Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.o
 
 # target to build an object file
-Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.o:
-	$(MAKE) -f CMakeFiles/proj1.dir/build.make CMakeFiles/proj1.dir/Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.o
-.PHONY : Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.o
+Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.o:
+	$(MAKE) -f CMakeFiles/proj1.dir/build.make CMakeFiles/proj1.dir/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.o
+.PHONY : Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.o
 
-Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.i: Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.i
+Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.i: Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.i
 
-.PHONY : Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.i
+.PHONY : Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.i
 
 # target to preprocess a source file
-Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.i:
-	$(MAKE) -f CMakeFiles/proj1.dir/build.make CMakeFiles/proj1.dir/Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.i
-.PHONY : Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.i
+Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.i:
+	$(MAKE) -f CMakeFiles/proj1.dir/build.make CMakeFiles/proj1.dir/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.i
+.PHONY : Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.i
 
-Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.s: Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.s
+Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.s: Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.s
 
-.PHONY : Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.s
+.PHONY : Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.s
 
 # target to generate assembly for a file
-Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.s:
-	$(MAKE) -f CMakeFiles/proj1.dir/build.make CMakeFiles/proj1.dir/Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.s
-.PHONY : Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.s
+Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.s:
+	$(MAKE) -f CMakeFiles/proj1.dir/build.make CMakeFiles/proj1.dir/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.s
+.PHONY : Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.s
 
 main.o: main.cpp.o
 
@@ -264,9 +264,9 @@ help:
 	@echo "... proj1"
 	@echo "... uninstall"
 	@echo "... glfw"
-	@echo "... Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.o"
-	@echo "... Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.i"
-	@echo "... Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.s"
+	@echo "... Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.o"
+	@echo "... Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.i"
+	@echo "... Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

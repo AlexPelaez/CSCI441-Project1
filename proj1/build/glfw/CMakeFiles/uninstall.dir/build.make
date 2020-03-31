@@ -43,10 +43,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ethanmiller/desktop/CSCI441/Project1/proj1
+CMAKE_SOURCE_DIR = /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ethanmiller/desktop/CSCI441/Project1/proj1/build
+CMAKE_BINARY_DIR = /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build
 
 # Utility rule file for uninstall.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /Users/ethanmiller/desktop/CSCI441/Project1/proj1/build
 include glfw/CMakeFiles/uninstall.dir/progress.make
 
 glfw/CMakeFiles/uninstall:
-	cd /Users/ethanmiller/desktop/CSCI441/Project1/proj1/build/glfw && /Applications/CMake.app/Contents/bin/cmake -P /Users/ethanmiller/desktop/CSCI441/Project1/proj1/build/glfw/cmake_uninstall.cmake
+	cd /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build/glfw && /Applications/CMake.app/Contents/bin/cmake -P /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build/glfw/cmake_uninstall.cmake
 
 uninstall: glfw/CMakeFiles/uninstall
 uninstall: glfw/CMakeFiles/uninstall.dir/build.make
@@ -67,10 +67,10 @@ glfw/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : glfw/CMakeFiles/uninstall.dir/build
 
 glfw/CMakeFiles/uninstall.dir/clean:
-	cd /Users/ethanmiller/desktop/CSCI441/Project1/proj1/build/glfw && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
+	cd /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build/glfw && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
 .PHONY : glfw/CMakeFiles/uninstall.dir/clean
 
 glfw/CMakeFiles/uninstall.dir/depend:
-	cd /Users/ethanmiller/desktop/CSCI441/Project1/proj1/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/ethanmiller/desktop/CSCI441/Project1/proj1 /Users/ethanmiller/desktop/CSCI441/Project1/deps/glfw /Users/ethanmiller/desktop/CSCI441/Project1/proj1/build /Users/ethanmiller/desktop/CSCI441/Project1/proj1/build/glfw /Users/ethanmiller/desktop/CSCI441/Project1/proj1/build/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1 /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glfw /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build/glfw /Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build/glfw/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : glfw/CMakeFiles/uninstall.dir/depend
 

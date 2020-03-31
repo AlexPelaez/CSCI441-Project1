@@ -6,7 +6,7 @@ C_FLAGS =  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk -f
 
 C_DEFINES = -D_GLFW_USE_CONFIG_H
 
-C_INCLUDES = -I/Users/ethanmiller/desktop/CSCI441/Project1/deps/glfw/include -I/Users/ethanmiller/desktop/CSCI441/Project1/deps/glfw/src -I/Users/ethanmiller/desktop/CSCI441/Project1/proj1/build/glfw/src 
+C_INCLUDES = -I/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glfw/include -I/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glfw/src -I/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/build/glfw/src 
 
 # Custom flags: glfw/src/CMakeFiles/glfw.dir/context.c.o_FLAGS = -Wdeclaration-after-statement
 

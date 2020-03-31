@@ -7,11 +7,11 @@ C_FLAGS =  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/ethanmiller/desktop/CSCI441/Project1/proj1/../deps/glfw/include -I/Users/ethanmiller/desktop/CSCI441/Project1/proj1/../deps/glad/include -I/Users/ethanmiller/desktop/CSCI441/Project1/proj1/../deps/csci441/include -I/Users/ethanmiller/desktop/CSCI441/Project1/proj1/../deps/glm -I/Users/ethanmiller/desktop/CSCI441/Project1/deps/glfw/include 
+C_INCLUDES = -I/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/../deps/glfw/include -I/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/../deps/glad/include -I/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/../deps/csci441/include -I/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/../deps/glm -I/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glfw/include 
 
 CXX_FLAGS =  -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.14.sdk   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/ethanmiller/desktop/CSCI441/Project1/proj1/../deps/glfw/include -I/Users/ethanmiller/desktop/CSCI441/Project1/proj1/../deps/glad/include -I/Users/ethanmiller/desktop/CSCI441/Project1/proj1/../deps/csci441/include -I/Users/ethanmiller/desktop/CSCI441/Project1/proj1/../deps/glm -I/Users/ethanmiller/desktop/CSCI441/Project1/deps/glfw/include 
+CXX_INCLUDES = -I/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/../deps/glfw/include -I/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/../deps/glad/include -I/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/../deps/csci441/include -I/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/../deps/glm -I/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glfw/include 
 

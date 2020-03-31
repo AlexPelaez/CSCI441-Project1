@@ -1104,13 +1104,13 @@ detail/setup.hpp
 detail/func_vector_relational.inl
 ../../deps/glm/glm/detail/func_vector_relational.inl
 
-/Users/ethanmiller/desktop/CSCI441/Project1/proj1/camera.h
+/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/camera.h
 csci441/matrix4.h
 -
 csci441/vector4.h
 -
 
-/Users/ethanmiller/desktop/CSCI441/Project1/proj1/main.cpp
+/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/main.cpp
 iostream
 -
 string
@@ -1136,19 +1136,19 @@ csci441/vector4.h
 csci441/uniform.h
 -
 shape.h
-/Users/ethanmiller/desktop/CSCI441/Project1/proj1/shape.h
+/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/shape.h
 model.h
-/Users/ethanmiller/desktop/CSCI441/Project1/proj1/model.h
+/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/model.h
 camera.h
-/Users/ethanmiller/desktop/CSCI441/Project1/proj1/camera.h
+/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/camera.h
 renderer.h
-/Users/ethanmiller/desktop/CSCI441/Project1/proj1/renderer.h
+/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/renderer.h
 object.h
-/Users/ethanmiller/desktop/CSCI441/Project1/proj1/object.h
+/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/object.h
 
-/Users/ethanmiller/desktop/CSCI441/Project1/proj1/model.h
+/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/model.h
 
-/Users/ethanmiller/desktop/CSCI441/Project1/proj1/object.h
+/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/object.h
 cstdlib
 -
 vector
@@ -1160,11 +1160,11 @@ fstream
 iostream
 -
 
-/Users/ethanmiller/desktop/CSCI441/Project1/proj1/renderer.h
+/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/renderer.h
 csci441/matrix3.h
 -
 
-/Users/ethanmiller/desktop/CSCI441/Project1/proj1/shape.h
+/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/proj1/shape.h
 cstdlib
 -
 vector

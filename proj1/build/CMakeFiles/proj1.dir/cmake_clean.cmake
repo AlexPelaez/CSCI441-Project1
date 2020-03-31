@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/proj1.dir/Users/ethanmiller/desktop/CSCI441/Project1/deps/glad/src/glad.c.o"
+  "CMakeFiles/proj1.dir/Users/ethanmiller/desktop/CSCI441/CSCI441-Project1/deps/glad/src/glad.c.o"
   "CMakeFiles/proj1.dir/main.cpp.o"
   "proj1"
   "proj1.pdb"
