@@ -29,7 +29,9 @@ void add_vertex(T& coords, const P& x, const P& y, const P& z, const N& nx, cons
 
 class Object {
 public:
-    std::vector<float> coords;
+    std::vector<float> coordsFlat;
+    std::vector<float> coordsSmooth;
+
     std::vector<Vector4> temp_vertices;
     std::vector<Vector4> vertexNormals;
 
@@ -116,19 +118,19 @@ public:
           float normalY = normal.y();
           float normalZ = normal.z();
 
-          add_vertex(coords, cx, cy, cz,
+          add_vertex(coordsFlat, cx, cy, cz,
                 normalX, normalY, normalZ, r, g, b);
-          add_vertex(coords, bx, by, bz,
+          add_vertex(coordsFlat, bx, by, bz,
                     normalX, normalY, normalZ, r, g, b);
-          add_vertex(coords, ax, ay, az,
+          add_vertex(coordsFlat, ax, ay, az,
             normalX, normalY, normalZ, r, g, b);
 
-          // add_vertex(coords, cx, cy, cz,
-          //       normCX, normCY, normCZ, r, g, b);
-          // add_vertex(coords, bx, by, bz,
-          //           normBX, normBY, normBZ, r, g, b);
-          // add_vertex(coords, ax, ay, az,
-          //   normAX, normAY, normAZ, r, g, b);
+          add_vertex(coordsSmooth, cx, cy, cz,
+                normCX, normCY, normCZ, r, g, b);
+          add_vertex(coordsSmooth, bx, by, bz,
+                    normBX, normBY, normBZ, r, g, b);
+          add_vertex(coordsSmooth, ax, ay, az,
+            normAX, normAY, normAZ, r, g, b);
         }
     }
     a.close();

@@ -115,10 +115,8 @@ int main(void) {
 
     // create obj
     Model maze(
-            Object(inputFilename, 1.0, 1.0, 1.0).coords,
+            Object(inputFilename, 1.0, 1.0, 1.0).coordsFlat,
             Shader("../vert.glsl", "../frag.glsl"));
-
-
 
     // make a floor
     Model floor(
