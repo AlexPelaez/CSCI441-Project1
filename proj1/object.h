@@ -29,13 +29,13 @@ void add_vertex(T& coords, const P& x, const P& y, const P& z, const N& nx, cons
 
 class Object {
 public:
-    std::vector<float> coordsFlat;
-    std::vector<float> coordsSmooth;
+    std::vector<float> coords;
     std::vector<Vector4> temp_vertices;
     std::vector<Vector4> vertexNormals;
 
 
     Object(char * filename, float r, float g, float b) {
+
       std::ifstream a;
       a.open(filename);
       std::string line;
@@ -43,42 +43,72 @@ public:
         std::istringstream in(line);      //make a stream for the line itself
         std::string type;
         in >> type;
-                       //and read the first whitespace-separated token
-        if(type == "v"){
+
+        if(type == "vn"){
           double x, y, z;
           in >> x >> y >> z;
-          //std::cout << x << " : " << y << " : " << z << std::endl;     //now read the whitespace-separated floats
+          std::cout << x << " : " << y << " : " << z << std::endl;
+          std::cout << "----------------------------------------" << std::endl;    //now read the whitespace-separated floats
+          Vector4 vertexNorm(x, y, z);
+          vertexNormals.push_back(vertexNorm);
+        }
+        else if(type == "v"){
+          double x, y, z;
+          in >> x >> y >> z;
+          std::cout << x << " : " << y << " : " << z << std::endl;     //now read the whitespace-separated floats
           Vector4 vertex(x, y, z);
           temp_vertices.push_back(vertex);
-          vertexNormals.push_back(Vector4(0, 0, 0));
         }
-
         else if (type == "f"){
-          int v1;
-          int v2;
-          int v3;
 
-          in >> v1 >> v2 >> v3;
-          //std::cout << v1 << " : " << v2 << " : " << v3 << std::endl;
+          char slash;
+          int v1;
+          int n1;
+          int v2;
+          int n2;
+          int v3;
+          int n3;
+
+          in >> v1 >> slash >> slash >> n1 >> v2 >> slash >> slash >> n2 >> v3 >> slash >> slash >> n3;
+          std::cout << v1 << "//" << n1 << " : " << v2 << "//" << n2 << " : " << v3 << "//" << n3 << std::endl;
           v1 -= 1;
           v2 -= 1;
           v3 -= 1;
 
+          n1 -= 1;
+          n2 -= 1;
+          n3 -= 1;
+
           Vector4 a1 = (temp_vertices[v1]);
-          // Vector4 a1 = aReg.normalized();
           float ax = a1.x();
           float ay = a1.y();
           float az = a1.z();
+
+          Vector4 normA = (vertexNormals[n1]);
+          float normAX = normA.x();
+          float normAY = normA.y();
+          float normAZ = normA.z();
+
           Vector4 b1 = (temp_vertices[v2]);
-          //Vector4 b1 = bReg.normalized();
           float bx = b1.x();
           float by = b1.y();
           float bz = b1.z();
+
+          Vector4 normB = (vertexNormals[n2]);
+          float normBX = normB.x();
+          float normBY = normB.y();
+          float normBZ = normB.z();
+
+
           Vector4 c1 = (temp_vertices[v3]);
-          //Vector4 c1 = cReg.normalized();
           float cx = c1.x();
           float cy = c1.y();
           float cz = c1.z();
+
+          Vector4 normC = (vertexNormals[n3]);
+          float normCX = normC.x();
+          float normCY = normC.y();
+          float normCZ = normC.z();
 
           Vector4 n = ((b1 - a1).cross(c1 - a1));
           Vector4 normal = n.normalized();
@@ -86,73 +116,22 @@ public:
           float normalY = normal.y();
           float normalZ = normal.z();
 
-          add_vertex(coordsFlat, cx, cy, cz,
+          add_vertex(coords, cx, cy, cz,
                 normalX, normalY, normalZ, r, g, b);
-          add_vertex(coordsFlat, bx, by, bz,
+          add_vertex(coords, bx, by, bz,
                     normalX, normalY, normalZ, r, g, b);
-          add_vertex(coordsFlat, ax, ay, az,
+          add_vertex(coords, ax, ay, az,
             normalX, normalY, normalZ, r, g, b);
 
-          vertexNormals[v1] = vertexNormals[v1] + normal;
-          vertexNormals[v2] = vertexNormals[v2] + normal;
-          vertexNormals[v3] = vertexNormals[v3] + normal;
-
+          // add_vertex(coords, cx, cy, cz,
+          //       normCX, normCY, normCZ, r, g, b);
+          // add_vertex(coords, bx, by, bz,
+          //           normBX, normBY, normBZ, r, g, b);
+          // add_vertex(coords, ax, ay, az,
+          //   normAX, normAY, normAZ, r, g, b);
         }
-      }
-
-      a.close();
-      for(int i = 0; i < vertexNormals.size(); i++){
-        vertexNormals[i] = vertexNormals[i].normalized();
-      }
-
-      a.open("../models/duck.obj");
-      while(std::getline(a, line)){
-        std::istringstream in(line);      //make a stream for the line itself
-        std::string type;
-        in >> type;
-
-        if (type == "f"){
-          int v1;
-          int v2;
-          int v3;
-
-          in >> v1 >> v2 >> v3;
-          //std::cout << v1 << " : " << v2 << " : " << v3 << std::endl;
-          v1 -= 1;
-          v2 -= 1;
-          v3 -= 1;
-
-          Vector4 a1 = (temp_vertices[v1]);
-          // Vector4 a1 = aReg.normalized();
-          float ax = a1.x();
-          float ay = a1.y();
-          float az = a1.z();
-          Vector4 b1 = (temp_vertices[v2]);
-          //Vector4 b1 = bReg.normalized();
-          float bx = b1.x();
-          float by = b1.y();
-          float bz = b1.z();
-          Vector4 c1 = (temp_vertices[v3]);
-          //Vector4 c1 = cReg.normalized();
-          float cx = c1.x();
-          float cy = c1.y();
-          float cz = c1.z();
-
-
-          add_vertex(coordsSmooth, cx, cy, cz,
-                vertexNormals[v3].x(), vertexNormals[v3].y(), vertexNormals[v3].z(), r, g, b);
-          add_vertex(coordsSmooth, bx, by, bz,
-                    vertexNormals[v2].x(), vertexNormals[v2].y(), vertexNormals[v2].z(), r, g, b);
-          add_vertex(coordsSmooth, ax, ay, az,
-            vertexNormals[v1].x(), vertexNormals[v1].y(), vertexNormals[v1].z(), r, g, b);
-
-        }
-      }
-      a.close();
-
-
-
-
+    }
+    a.close();
   }
 
 };

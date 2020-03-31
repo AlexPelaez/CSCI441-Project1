@@ -21,8 +21,8 @@
 
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 960;
-char inputFilename[] = "../models/duck.obj";
- int shape = 0;
+char inputFilename[] = "../models/Maze1.obj";
+int shape = 0;
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
@@ -112,29 +112,28 @@ int main(void) {
         return -1;
     }
 
+
     // create obj
-    Model obj0(
-            Object(inputFilename, 1.0, 0.8, 0.0).coordsFlat,
+    Model maze(
+            Object(inputFilename, 1.0, 1.0, 1.0).coords,
             Shader("../vert.glsl", "../frag.glsl"));
 
-    Model obj1(
-            Object(inputFilename, 0.0, 0.0, 1.0).coordsSmooth,
-            Shader("../vert.glsl", "../frag.glsl"));
+
 
     // make a floor
     Model floor(
             DiscoCube().coords,
             Shader("../vert.glsl", "../frag.glsl"));
-    Matrix4 floor_trans, floor_scale, obj_scale;
-    obj_scale.scale(.0009, .0009, .0009);
+    Matrix4 floor_trans, floor_scale, maze_scale, maze_trans, maze_rotX,maze_rotY;
+
+    maze_scale.scale(.005, .005, .005);
+    maze_rotX.rotate_x(-90);
+    maze_rotY.rotate_y(180);
+    maze_trans.translate(1.2, -1, -1.5);
     floor_trans.translate(0, -2, 0);
     floor_scale.scale(100, 1, 100);
 
-
-    obj0.model = obj_scale;
-    obj1.model = obj_scale;
-
-
+    maze.model =  maze_trans * maze_rotY * maze_rotX * maze_scale;
     floor.model = floor_trans*floor_scale;
 
     // setup camera
@@ -159,21 +158,13 @@ int main(void) {
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
         // process input
-
-
         /* Render here */
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // render the object and the floor
-        if(shape % 2 == 0){
-          processInput(obj0.model, window);
-          renderer.render(camera, obj0, lightPos);
-        }
-        else{
-          processInput(obj1.model, window);
-          renderer.render(camera, obj1, lightPos);
-        }
+        processInput(maze.model, window);
+        renderer.render(camera, maze, lightPos);
 
         renderer.render(camera, floor, lightPos);
 
