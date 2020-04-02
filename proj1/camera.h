@@ -8,14 +8,14 @@ class Camera {
 public:
     Matrix4 projection;
     Vector4 eye;
-    Vector4 origin;
+    Vector4 gaze;
     Vector4 up;
 
-    Camera() : eye(0,0,0), origin(0,0,0), up(0,0,0) {}
+    Camera() : eye(0,0,0), gaze(0,0,0), up(0,0,0) {}
 
     Matrix4 look_at() const {
         Matrix4 mat;
-        mat.look_at(eye, origin, up);
+        mat.look_at(eye, gaze, up);
         return mat;
     }
 };

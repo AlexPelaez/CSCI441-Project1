@@ -21,8 +21,12 @@
 
 const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 960;
-char inputFilename[] = "../models/Maze1.obj";
+char mazeFilename[] = "../models/TallMaze.obj";
+char objectFilename[] = "../models/bunny.obj";
 int shape = 0;
+float cameraX = 0;
+float cameraY = 0.05;
+float cameraZ = 0.2;
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
@@ -54,12 +58,29 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
     else if (isPressed(window, '-')) { trans.scale(1-SCALE, 1-SCALE, 1-SCALE); }
     else if (isPressed(window, '=')) { trans.scale(1+SCALE, 1+SCALE, 1+SCALE); }
     // TRANSLATE
-    else if (isPressed(window, GLFW_KEY_UP)) { trans.translate(0, TRANS, 0); }
-    else if (isPressed(window, GLFW_KEY_DOWN)) { trans.translate(0, -TRANS, 0); }
-    else if (isPressed(window, GLFW_KEY_LEFT)) { trans.translate(-TRANS, 0, 0); }
-    else if (isPressed(window, GLFW_KEY_RIGHT)) { trans.translate(TRANS, 0, 0); }
-    else if (isPressed(window, ',')) { trans.translate(0,0,TRANS); }
-    else if (isPressed(window, '.')) { trans.translate(0,0,-TRANS); }
+    else if (isPressed(window, GLFW_KEY_UP)) {
+      trans.translate(0, TRANS, 0);
+      cameraY += TRANS;
+    }
+    else if (isPressed(window, GLFW_KEY_DOWN)) {
+      trans.translate(0, -TRANS, 0);
+      cameraY -= TRANS;
+    }
+    else if (isPressed(window, GLFW_KEY_LEFT)) {
+      trans.translate(-TRANS, 0, 0);
+      cameraX -= TRANS;
+    }
+    else if (isPressed(window, GLFW_KEY_RIGHT)) {
+      trans.translate(TRANS, 0, 0);
+      cameraX += TRANS;
+    }
+    else if (isPressed(window, ',')) {
+      trans.translate(0,0,TRANS);
+      cameraZ += TRANS;
+    }
+    else if (isPressed(window, '.')) { trans.translate(0,0,-TRANS);
+      cameraZ -= TRANS;
+    }
 
     return trans * model;
 }
@@ -114,23 +135,36 @@ int main(void) {
 
 
     // create obj
+    Model bunny(
+            Object(objectFilename, 1.0, 0.0, 0.0).coordsSmooth,
+            Shader("../vert.glsl", "../frag.glsl"));
+
     Model maze(
-            Object(inputFilename, 1.0, 1.0, 1.0).coordsFlat,
+            Object(mazeFilename, 1.0, 1.0, 1.0).coordsFlat,
             Shader("../vert.glsl", "../frag.glsl"));
 
     // make a floor
     Model floor(
             DiscoCube().coords,
             Shader("../vert.glsl", "../frag.glsl"));
-    Matrix4 floor_trans, floor_scale, maze_scale, maze_trans, maze_rotX,maze_rotY;
 
+
+
+    Matrix4 floor_trans, floor_scale, maze_scale, maze_trans, maze_rotX,maze_rotY, bunny_scale, bunny_trans, bunny_rotY;
+
+
+
+    bunny_scale.scale(.5, .5, .5);
+    bunny_trans.translate(0, -0.1, 0);
     maze_scale.scale(.005, .005, .005);
     maze_rotX.rotate_x(-90);
     maze_rotY.rotate_y(180);
-    maze_trans.translate(1.2, -1, -1.5);
+    bunny_rotY.rotate_y(-90);
+    maze_trans.translate(1.2, -1, -5);
     floor_trans.translate(0, -2, 0);
     floor_scale.scale(100, 1, 100);
 
+    bunny.model = bunny_trans * bunny_scale;
     maze.model =  maze_trans * maze_rotY * maze_rotX * maze_scale;
     floor.model = floor_trans*floor_scale;
 
@@ -140,8 +174,8 @@ int main(void) {
 
     Camera camera;
     camera.projection = projection;
-    camera.eye = Vector4(0, 0, 3);
-    camera.origin = Vector4(0, 0, 0);
+    camera.eye = Vector4(cameraX, cameraY, cameraZ);
+    camera.gaze = Vector4(0, 0, -10);
     camera.up = Vector4(0, 1, 0);
 
     // and use z-buffering
@@ -161,10 +195,14 @@ int main(void) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // render the object and the floor
-        processInput(maze.model, window);
-        renderer.render(camera, maze, lightPos);
+        camera.eye = Vector4(cameraX, cameraY, cameraZ);
 
-        renderer.render(camera, floor, lightPos);
+
+        processInput(bunny.model, window);
+        renderer.render(camera, bunny, lightPos);
+        renderer.render(camera, maze, lightPos);
+        //renderer.render(camera, floor, lightPos);
+
 
         /* Swap front and back and poll for io events */
         glfwSwapBuffers(window);
