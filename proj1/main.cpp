@@ -155,7 +155,7 @@ int main(void) {
 
 
     bunny_scale.scale(.5, .5, .5);
-    bunny_trans.translate(0, -0.1, 0);
+    
     maze_scale.scale(.005, .005, .005);
     maze_rotX.rotate_x(-90);
     maze_rotY.rotate_y(180);
