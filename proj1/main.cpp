@@ -47,8 +47,20 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
     const float SCALE = .05;
     const float TRANS = .01;
 
+    float currentTransX = 0;
+    float currentTransY = 0;
+    float currentTransZ = 0;
+
     // ROTATE
-    if (isPressed(window, GLFW_KEY_U)) { trans.rotate_x(-ROT); }
+    if (isPressed(window, GLFW_KEY_U)) {
+          trans.translate(-currentTransX, 0, 0);
+          trans.translate(0, -currentTransY, 0);
+          trans.translate(0, 0, -currentTransZ);
+          trans.rotate_x(-ROT);
+          trans.translate(currentTransX, 0, 0);
+          trans.translate(0, currentTransY, 0);
+          trans.translate(0, 0, currentTransZ);
+     }
     else if (isPressed(window, GLFW_KEY_I)) { trans.rotate_x(ROT); }
     else if (isPressed(window, GLFW_KEY_O)) { trans.rotate_y(-ROT); }
     else if (isPressed(window, GLFW_KEY_P)) { trans.rotate_y(ROT); }
@@ -61,10 +73,12 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
     else if (isPressed(window, GLFW_KEY_UP)) {
       trans.translate(0, TRANS, 0);
       cameraY += TRANS;
+      currentTransY += TRANS;
     }
     else if (isPressed(window, GLFW_KEY_DOWN)) {
       trans.translate(0, -TRANS, 0);
       cameraY -= TRANS;
+      currentTransY -= TRANS;
     }
     else if (isPressed(window, GLFW_KEY_LEFT)) {
       trans.translate(-TRANS, 0, 0);
