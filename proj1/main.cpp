@@ -29,11 +29,11 @@ float cameraY = 0.05;
 float cameraZ = 4.2;
 
 float cameraBirdX = 0;
-float cameraBirdY = 10;
+float cameraBirdY = 9;
 float cameraBirdZ = 4;
 
 Vector4 cameraBirdPos = Vector4(cameraBirdX, cameraBirdY, cameraBirdZ);
-Vector4 cameraBirdFront = Vector4(0.0f, -10.0f, -5.0f);
+Vector4 cameraBirdFront = Vector4(0.0f, -8.0f, -0.6f);
 Vector4 cameraBirdUp = Vector4(0.0f, 1.0f, 0.0f);
 
 
