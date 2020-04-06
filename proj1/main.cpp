@@ -26,10 +26,21 @@ char objectFilename[] = "../models/bunny.obj";
 int mode = 0;
 float cameraX = 0;
 float cameraY = 0.05;
-float cameraZ = 0.2;
+float cameraZ = 4.2;
+
+float cameraBirdX = 0;
+float cameraBirdY = 10;
+float cameraBirdZ = 4;
+
+Vector4 cameraBirdPos = Vector4(cameraBirdX, cameraBirdY, cameraBirdZ);
+Vector4 cameraBirdFront = Vector4(0.0f, -10.0f, -1.0f);
+Vector4 cameraBirdUp = Vector4(0.0f, 1.0f, 0.0f);
+
+
+
 float currentTransX = 0;
 float currentTransY = 0;
-float currentTransZ = 0;
+float currentTransZ = 4;
 
 bool firstMouse = true;
 float yaw   = -90.0f;	// yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
@@ -61,6 +72,8 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
     const float ROT = 1;
     const float SCALE = .05;
     const float TRANS = .01;
+    const float TRANS1 = .05;
+    const float CAMINC = .03;
 
 
 
@@ -102,8 +115,9 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
     // TRANSLATE
     else if (isPressed(window, ',')) {
       trans.translate(0, TRANS, 0);
-      cameraY += TRANS;
-      currentTransY += TRANS;
+      cameraY += TRANS1;
+      currentTransY += TRANS1;
+      std::cout << currentTransY << '\n';
     }
     else if (isPressed(window, '.')) {
       trans.translate(0, -TRANS, 0);
@@ -129,6 +143,35 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
       cameraZ -= TRANS;
       currentTransZ -= TRANS;
     }
+    //Camera Panning
+    else if (isPressed(window, GLFW_KEY_W)) {
+      if (cameraBirdZ > -6.8){
+        cameraBirdZ -= CAMINC;
+        std::cout << cameraBirdZ << '\n';
+      }
+    }
+    else if (isPressed(window, GLFW_KEY_A)) {
+      if (cameraBirdX > -2){
+        cameraBirdX -= CAMINC;
+        std::cout << cameraBirdX << '\n';
+      }
+
+    }
+    else if (isPressed(window, GLFW_KEY_S)) {
+      if (cameraBirdZ < 4){
+        cameraBirdZ += CAMINC;
+        std::cout << cameraBirdZ << '\n';
+      }
+
+    }
+    else if (isPressed(window, GLFW_KEY_D)) {
+      if (cameraBirdX < 2){
+        cameraBirdX += CAMINC;
+        std::cout << cameraBirdX << '\n';
+      }
+
+    }
+
 
     return forwardTrans * trans * backwardTrans * model;
 }
@@ -236,13 +279,13 @@ int main(void) {
 
 
 
-    bunny_scale.scale(.5, .5, .5);
-
-    maze_scale.scale(.005, .005, .005);
+    bunny_scale.scale(.8, .8, .8);
+    bunny_trans.translate(0, 0, 4);
+    maze_scale.scale(.02, .02, .02);
     maze_rotX.rotate_x(-90);
     maze_rotY.rotate_y(180);
     bunny_rotY.rotate_y(-90);
-    maze_trans.translate(1.2, -1, -5);
+    maze_trans.translate(2, -1, -7);
     floor_trans.translate(0, -2, 0);
     floor_scale.scale(100, 1, 100);
 
@@ -253,6 +296,7 @@ int main(void) {
     // setup camera
     Matrix4 projection;
     projection.perspective(45, 1, .01, 10);
+
 
     Camera camera;
     camera.projection = projection;
@@ -283,14 +327,15 @@ int main(void) {
           camera.gaze = cameraPos + cameraFront;
         }
         else{
-          camera.eye = Vector4(0, 7, -4);
-          camera.gaze = Vector4(0,0, -4.1);
+          cameraBirdPos = Vector4(cameraBirdX, cameraBirdY, cameraBirdZ);
+          camera.eye = cameraBirdPos;
+          camera.gaze = cameraBirdPos + cameraBirdFront;
         }
 
         processInput(bunny.model, window);
         renderer.render(camera, bunny, lightPos);
         renderer.render(camera, maze, lightPos);
-        //renderer.render(camera, floor, lightPos);
+        renderer.render(camera, floor, lightPos);
 
 
         /* Swap front and back and poll for io events */

@@ -48,15 +48,15 @@ public:
         if(type == "vn"){
           double x, y, z;
           in >> x >> y >> z;
-          std::cout << x << " : " << y << " : " << z << std::endl;
-          std::cout << "----------------------------------------" << std::endl;    //now read the whitespace-separated floats
+          //std::cout << x << " : " << y << " : " << z << std::endl;
+          //std::cout << "----------------------------------------" << std::endl;    //now read the whitespace-separated floats
           Vector4 vertexNorm(x, y, z);
           vertexNormals.push_back(vertexNorm);
         }
         else if(type == "v"){
           double x, y, z;
           in >> x >> y >> z;
-          std::cout << x << " : " << y << " : " << z << std::endl;     //now read the whitespace-separated floats
+        //  std::cout << x << " : " << y << " : " << z << std::endl;     //now read the whitespace-separated floats
           Vector4 vertex(x, y, z);
           temp_vertices.push_back(vertex);
         }
@@ -71,7 +71,7 @@ public:
           int n3;
 
           in >> v1 >> slash >> slash >> n1 >> v2 >> slash >> slash >> n2 >> v3 >> slash >> slash >> n3;
-          std::cout << v1 << "//" << n1 << " : " << v2 << "//" << n2 << " : " << v3 << "//" << n3 << std::endl;
+          //std::cout << v1 << "//" << n1 << " : " << v2 << "//" << n2 << " : " << v3 << "//" << n3 << std::endl;
           v1 -= 1;
           v2 -= 1;
           v3 -= 1;
