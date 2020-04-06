@@ -90,12 +90,12 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
       trans.scale(1-SCALE, 1-SCALE, 1-SCALE); }
     else if (isPressed(window, '=')) { trans.scale(1+SCALE, 1+SCALE, 1+SCALE); }
     // TRANSLATE
-    else if (isPressed(window, GLFW_KEY_UP)) {
+    else if (isPressed(window, ',')) {
       trans.translate(0, TRANS, 0);
       cameraY += TRANS;
       currentTransY += TRANS;
     }
-    else if (isPressed(window, GLFW_KEY_DOWN)) {
+    else if (isPressed(window, '.')) {
       trans.translate(0, -TRANS, 0);
       cameraY -= TRANS;
       currentTransY -= TRANS;
@@ -110,12 +110,12 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
       cameraX += TRANS;
       currentTransX += TRANS;
     }
-    else if (isPressed(window, ',')) {
+    else if (isPressed(window, GLFW_KEY_DOWN)) {
       trans.translate(0,0,TRANS);
       cameraZ += TRANS;
       currentTransZ += TRANS;
     }
-    else if (isPressed(window, '.')) { trans.translate(0,0,-TRANS);
+    else if (isPressed(window, GLFW_KEY_UP)) { trans.translate(0,0,-TRANS);
       cameraZ -= TRANS;
       currentTransZ -= TRANS;
     }
