@@ -24,9 +24,9 @@ const int SCREEN_HEIGHT = 960;
 char mazeFilename[] = "../models/TallMaze.obj";
 char objectFilename[] = "../models/bunny.obj";
 int mode = 0;
-float cameraX = 0.2;
-float cameraY = 0.1;
-float cameraZ = 3;
+float cameraX = 0;
+float cameraY = 0.2;
+float cameraZ = 4;
 
 float cameraBirdX = 0;
 float cameraBirdY = 9;
