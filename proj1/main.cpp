@@ -23,13 +23,23 @@ const int SCREEN_WIDTH = 1280;
 const int SCREEN_HEIGHT = 960;
 char mazeFilename[] = "../models/TallMaze.obj";
 char objectFilename[] = "../models/bunny.obj";
-int shape = 0;
+int mode = 0;
 float cameraX = 0;
 float cameraY = 0.05;
 float cameraZ = 0.2;
 float currentTransX = 0;
 float currentTransY = 0;
 float currentTransZ = 0;
+
+bool firstMouse = true;
+float yaw   = -90.0f;	// yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
+float pitch =  0.0f;
+float lastX =  SCREEN_WIDTH / 2.0;
+float lastY =  SCREEN_HEIGHT / 2.0;
+
+Vector4 cameraPos = Vector4(cameraX, cameraY, cameraZ);
+Vector4 cameraFront = Vector4(0.0f, 0.0f, -1.0f);
+Vector4 cameraUp = Vector4(0.0f, 1.0f, 0.0f);
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
@@ -128,7 +138,7 @@ void processInput(Matrix4& model, GLFWwindow *window) {
         glfwSetWindowShouldClose(window, true);
     }
     else if(glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS){
-        shape++;
+        mode++;
         glfwWaitEventsTimeout(0.7);
     }
     model = processModel(model, window);
@@ -137,6 +147,38 @@ void processInput(Matrix4& model, GLFWwindow *window) {
 void errorCallback(int error, const char* description) {
     fprintf(stderr, "GLFW Error: %s\n", description);
 }
+
+void mouse_callback(GLFWwindow* window, double xpos, double ypos)
+{
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+    lastX = xpos;
+    lastY = ypos;
+
+    float sensitivity = 0.05f; // change this value to your liking
+    xoffset *= sensitivity;
+    yoffset *= sensitivity;
+
+    yaw += xoffset;
+    pitch += yoffset;
+
+    // make sure that when pitch is out of bounds, screen doesn't get flipped
+    if (pitch > 89.0f)
+        pitch = 89.0f;
+    if (pitch < -89.0f)
+        pitch = -89.0f;
+
+    Vector4 front = Vector4(cos(yaw) * cos(pitch), sin(pitch), sin(yaw) * cos(pitch));
+    cameraFront = front.normalized();
+}
+
 
 int main(void) {
     GLFWwindow* window;
@@ -163,6 +205,8 @@ int main(void) {
 
     // tell glfw what to do on resize
     glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
+    glfwSetCursorPosCallback(window, mouse_callback);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
     // init glad
     if (!gladLoadGL()) {
@@ -212,9 +256,9 @@ int main(void) {
 
     Camera camera;
     camera.projection = projection;
-    camera.eye = Vector4(cameraX, cameraY, cameraZ);
-    camera.gaze = Vector4(0, 0, -10);
-    camera.up = Vector4(0, 1, 0);
+    camera.eye = cameraPos;
+    camera.gaze = cameraFront + cameraPos;
+    camera.up = cameraUp;
 
     // and use z-buffering
     glEnable(GL_DEPTH_TEST);
@@ -233,7 +277,16 @@ int main(void) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         // render the object and the floor
-        camera.eye = Vector4(cameraX, cameraY, cameraZ);
+        if (mode % 2 == 0){
+          cameraPos = Vector4(cameraX, cameraY, cameraZ);
+          camera.eye = cameraPos;
+          camera.gaze = cameraPos + cameraFront;
+        }
+        else{
+          camera.eye = Vector4(0, 7, -4);
+          camera.gaze = Vector4(0,0, -4.1);
+        }
+
 
 
         processInput(bunny.model, window);
