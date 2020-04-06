@@ -287,8 +287,6 @@ int main(void) {
           camera.gaze = Vector4(0,0, -4.1);
         }
 
-
-
         processInput(bunny.model, window);
         renderer.render(camera, bunny, lightPos);
         renderer.render(camera, maze, lightPos);
