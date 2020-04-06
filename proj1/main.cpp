@@ -33,7 +33,7 @@ float cameraBirdY = 10;
 float cameraBirdZ = 4;
 
 Vector4 cameraBirdPos = Vector4(cameraBirdX, cameraBirdY, cameraBirdZ);
-Vector4 cameraBirdFront = Vector4(0.0f, -10.0f, -1.0f);
+Vector4 cameraBirdFront = Vector4(0.0f, -10.0f, -5.0f);
 Vector4 cameraBirdUp = Vector4(0.0f, 1.0f, 0.0f);
 
 
@@ -115,8 +115,8 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
     // TRANSLATE
     else if (isPressed(window, ',')) {
       trans.translate(0, TRANS, 0);
-      cameraY += TRANS1;
-      currentTransY += TRANS1;
+      cameraY += TRANS;
+      currentTransY += TRANS;
       std::cout << currentTransY << '\n';
     }
     else if (isPressed(window, '.')) {
