@@ -24,9 +24,9 @@ const int SCREEN_HEIGHT = 960;
 char mazeFilename[] = "../models/TallMaze.obj";
 char objectFilename[] = "../models/bunny.obj";
 int mode = 0;
-float cameraX = 0;
-float cameraY = 0.05;
-float cameraZ = 4.2;
+float cameraX = 0.2;
+float cameraY = 0.1;
+float cameraZ = 3;
 
 float cameraBirdX = 0;
 float cameraBirdY = 9;
@@ -151,7 +151,7 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
       }
     }
     else if (isPressed(window, GLFW_KEY_A)) {
-      if (cameraBirdX > -2){
+      if (cameraBirdX > -9){
         cameraBirdX -= CAMINC;
         std::cout << cameraBirdX << '\n';
       }
@@ -335,7 +335,6 @@ int main(void) {
         processInput(bunny.model, window);
         renderer.render(camera, bunny, lightPos);
         renderer.render(camera, maze, lightPos);
-        renderer.render(camera, floor, lightPos);
 
 
         /* Swap front and back and poll for io events */
