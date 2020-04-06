@@ -32,6 +32,8 @@ float cameraBirdX = 0;
 float cameraBirdY = 9;
 float cameraBirdZ = 4;
 
+
+
 Vector4 cameraBirdPos = Vector4(cameraBirdX, cameraBirdY, cameraBirdZ);
 Vector4 cameraBirdFront = Vector4(0.0f, -8.0f, -0.6f);
 Vector4 cameraBirdUp = Vector4(0.0f, 1.0f, 0.0f);
@@ -133,6 +135,7 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
       trans.translate(TRANS, 0, 0);
       cameraX += TRANS;
       currentTransX += TRANS;
+
     }
     else if (isPressed(window, GLFW_KEY_DOWN)) {
       trans.translate(0,0,TRANS);
@@ -311,7 +314,7 @@ int main(void) {
     Renderer renderer;
 
     // set the light position
-    Vector4 lightPos(3.75f, 3.75f, 4.0f);
+    Vector4 lightPos(0.0f, 0.2f, 4.0f);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window)) {
@@ -331,6 +334,8 @@ int main(void) {
           camera.eye = cameraBirdPos;
           camera.gaze = cameraBirdPos + cameraBirdFront;
         }
+
+        lightPos = Vector4(cameraX, cameraY,cameraZ);
 
         processInput(bunny.model, window);
         renderer.render(camera, bunny, lightPos);
