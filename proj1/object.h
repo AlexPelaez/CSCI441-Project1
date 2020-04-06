@@ -45,7 +45,6 @@ public:
         std::istringstream in(line);      //make a stream for the line itself
         std::string type;
         in >> type;
-
         if(type == "vn"){
           double x, y, z;
           in >> x >> y >> z;

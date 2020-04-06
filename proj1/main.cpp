@@ -27,6 +27,9 @@ int shape = 0;
 float cameraX = 0;
 float cameraY = 0.05;
 float cameraZ = 0.2;
+float currentTransX = 0;
+float currentTransY = 0;
+float currentTransZ = 0;
 
 void framebufferSizeCallback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
@@ -42,32 +45,49 @@ bool isReleased(GLFWwindow *window, int key) {
 
 Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
     Matrix4 trans;
+    Matrix4 forwardTrans;
+    Matrix4 backwardTrans;
 
     const float ROT = 1;
     const float SCALE = .05;
     const float TRANS = .01;
 
-    float currentTransX = 0;
-    float currentTransY = 0;
-    float currentTransZ = 0;
+
 
     // ROTATE
     if (isPressed(window, GLFW_KEY_U)) {
-          trans.translate(-currentTransX, 0, 0);
-          trans.translate(0, -currentTransY, 0);
-          trans.translate(0, 0, -currentTransZ);
-          trans.rotate_x(-ROT);
-          trans.translate(currentTransX, 0, 0);
-          trans.translate(0, currentTransY, 0);
-          trans.translate(0, 0, currentTransZ);
-     }
-    else if (isPressed(window, GLFW_KEY_I)) { trans.rotate_x(ROT); }
-    else if (isPressed(window, GLFW_KEY_O)) { trans.rotate_y(-ROT); }
-    else if (isPressed(window, GLFW_KEY_P)) { trans.rotate_y(ROT); }
-    else if (isPressed(window, '[')) { trans.rotate_z(-ROT); }
-    else if (isPressed(window, ']')) { trans.rotate_z(ROT); }
+      backwardTrans.translate(-currentTransX, -currentTransY, -currentTransZ);
+      trans.rotate_x(-ROT);
+      forwardTrans.translate(currentTransX, currentTransY, currentTransZ);
+    }
+    else if (isPressed(window, GLFW_KEY_I)) {
+      backwardTrans.translate(-currentTransX, -currentTransY, -currentTransZ);
+      trans.rotate_x(ROT);
+      forwardTrans.translate(currentTransX, currentTransY, currentTransZ);
+    }
+    else if (isPressed(window, GLFW_KEY_O)) {
+      backwardTrans.translate(-currentTransX, -currentTransY, -currentTransZ);
+      trans.rotate_y(-ROT);
+      forwardTrans.translate(currentTransX, currentTransY, currentTransZ);
+    }
+    else if (isPressed(window, GLFW_KEY_P)) {
+      backwardTrans.translate(-currentTransX, -currentTransY, -currentTransZ);
+      trans.rotate_y(ROT);
+      forwardTrans.translate(currentTransX, currentTransY, currentTransZ);
+    }
+    else if (isPressed(window, '[')) {
+      backwardTrans.translate(-currentTransX, -currentTransY, -currentTransZ);
+      trans.rotate_z(-ROT);
+      forwardTrans.translate(currentTransX, currentTransY, currentTransZ);
+    }
+    else if (isPressed(window, ']')) {
+      backwardTrans.translate(-currentTransX, -currentTransY, -currentTransZ);
+      trans.rotate_z(ROT);
+      forwardTrans.translate(currentTransX, currentTransY, currentTransZ);
+    }
     // SCALE
-    else if (isPressed(window, '-')) { trans.scale(1-SCALE, 1-SCALE, 1-SCALE); }
+    else if (isPressed(window, '-')) {
+      trans.scale(1-SCALE, 1-SCALE, 1-SCALE); }
     else if (isPressed(window, '=')) { trans.scale(1+SCALE, 1+SCALE, 1+SCALE); }
     // TRANSLATE
     else if (isPressed(window, GLFW_KEY_UP)) {
@@ -83,20 +103,24 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
     else if (isPressed(window, GLFW_KEY_LEFT)) {
       trans.translate(-TRANS, 0, 0);
       cameraX -= TRANS;
+      currentTransX -= TRANS;
     }
     else if (isPressed(window, GLFW_KEY_RIGHT)) {
       trans.translate(TRANS, 0, 0);
       cameraX += TRANS;
+      currentTransX += TRANS;
     }
     else if (isPressed(window, ',')) {
       trans.translate(0,0,TRANS);
       cameraZ += TRANS;
+      currentTransZ += TRANS;
     }
     else if (isPressed(window, '.')) { trans.translate(0,0,-TRANS);
       cameraZ -= TRANS;
+      currentTransZ -= TRANS;
     }
 
-    return trans * model;
+    return forwardTrans * trans * backwardTrans * model;
 }
 
 void processInput(Matrix4& model, GLFWwindow *window) {
@@ -169,7 +193,7 @@ int main(void) {
 
 
     bunny_scale.scale(.5, .5, .5);
-    
+
     maze_scale.scale(.005, .005, .005);
     maze_rotX.rotate_x(-90);
     maze_rotY.rotate_y(180);
