@@ -29,3 +29,6 @@ All of the following commands assume that you're in the `proj1` directory. You w
 
 # Image
 ![birds-eye.png](./images/birds-eye.png)
+
+# Video
+A video of the maze program in action can be found [here](https://cloud.pallman.us/yAuvwnD1)!
