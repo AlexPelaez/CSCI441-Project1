@@ -1,5 +1,5 @@
 # CSCI 441 Project 1 - The Maze
-
+The Maze is a fun 3D-Maze that the user can traverse in either a first person prespective or from a birds eye view that is built in OpenGL.
 
 
 # Building
