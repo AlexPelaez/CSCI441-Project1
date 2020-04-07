@@ -21,12 +21,6 @@ To run the program first navigate to the `build` directory. Then run the followi
   * Move Left: `left arrow`
   * Move Backward: `down arrow`
   * Move Right: `right arrow`
-* ## Manipulation of Character
-  * Rotate Around X-Axis: `I` and `U`
-  * Rotate Around Y-Axis: `O` and `P`
-  * Rotate Around Z-Axis: `[` and `]`
-  * Move Character Along Y-Axis: `,` and `.`
-  * Scale: `-` and `=`
 * ## Camera
   * Switch Mode: `space`
   * Pan Camera (Bird's Eye View): `W`, `A`, `S`, and `D`

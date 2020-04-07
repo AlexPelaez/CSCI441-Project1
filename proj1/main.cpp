@@ -25,7 +25,7 @@ char mazeFilename[] = "../models/TallMaze.obj";
 char objectFilename[] = "../models/bunny.obj";
 int mode = 0;
 float cameraX = 0;
-float cameraY = 0.2;
+float cameraY = -0.2;
 float cameraZ = 4;
 
 float cameraBirdX = 0;
@@ -80,53 +80,10 @@ Matrix4 processModel(const Matrix4& model, GLFWwindow *window) {
 
 
     // ROTATE
-    if (isPressed(window, GLFW_KEY_U)) {
-      backwardTrans.translate(-currentTransX, -currentTransY, -currentTransZ);
-      trans.rotate_x(-ROT);
-      forwardTrans.translate(currentTransX, currentTransY, currentTransZ);
-    }
-    else if (isPressed(window, GLFW_KEY_I)) {
-      backwardTrans.translate(-currentTransX, -currentTransY, -currentTransZ);
-      trans.rotate_x(ROT);
-      forwardTrans.translate(currentTransX, currentTransY, currentTransZ);
-    }
-    else if (isPressed(window, GLFW_KEY_O)) {
-      backwardTrans.translate(-currentTransX, -currentTransY, -currentTransZ);
-      trans.rotate_y(-ROT);
-      forwardTrans.translate(currentTransX, currentTransY, currentTransZ);
-    }
-    else if (isPressed(window, GLFW_KEY_P)) {
-      backwardTrans.translate(-currentTransX, -currentTransY, -currentTransZ);
-      trans.rotate_y(ROT);
-      forwardTrans.translate(currentTransX, currentTransY, currentTransZ);
-    }
-    else if (isPressed(window, '[')) {
-      backwardTrans.translate(-currentTransX, -currentTransY, -currentTransZ);
-      trans.rotate_z(-ROT);
-      forwardTrans.translate(currentTransX, currentTransY, currentTransZ);
-    }
-    else if (isPressed(window, ']')) {
-      backwardTrans.translate(-currentTransX, -currentTransY, -currentTransZ);
-      trans.rotate_z(ROT);
-      forwardTrans.translate(currentTransX, currentTransY, currentTransZ);
-    }
+
     // SCALE
-    else if (isPressed(window, '-')) {
-      trans.scale(1-SCALE, 1-SCALE, 1-SCALE); }
-    else if (isPressed(window, '=')) { trans.scale(1+SCALE, 1+SCALE, 1+SCALE); }
     // TRANSLATE
-    else if (isPressed(window, ',')) {
-      trans.translate(0, TRANS, 0);
-      cameraY += TRANS;
-      currentTransY += TRANS;
-      std::cout << currentTransY << '\n';
-    }
-    else if (isPressed(window, '.')) {
-      trans.translate(0, -TRANS, 0);
-      cameraY -= TRANS;
-      currentTransY -= TRANS;
-    }
-    else if (isPressed(window, GLFW_KEY_LEFT)) {
+    if (isPressed(window, GLFW_KEY_LEFT)) {
       trans.translate(-TRANS, 0, 0);
       cameraX -= TRANS;
       currentTransX -= TRANS;
@@ -216,10 +173,10 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     pitch += yoffset;
 
     // make sure that when pitch is out of bounds, screen doesn't get flipped
-    if (pitch > 89.0f)
-        pitch = 89.0f;
-    if (pitch < -89.0f)
-        pitch = -89.0f;
+    if (pitch > 1.5)
+        pitch = 1.5;
+    if (pitch < -1.5)
+        pitch = -1.5;
 
     Vector4 front = Vector4(cos(yaw) * cos(pitch), sin(pitch), sin(yaw) * cos(pitch));
     cameraFront = front.normalized();
@@ -283,7 +240,7 @@ int main(void) {
 
 
     bunny_scale.scale(.8, .8, .8);
-    bunny_trans.translate(0, 0, 4);
+    bunny_trans.translate(0, -0.4, 4);
     maze_scale.scale(.02, .02, .02);
     maze_rotX.rotate_x(-90);
     maze_rotY.rotate_y(180);
