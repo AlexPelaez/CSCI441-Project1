@@ -1,6 +1,7 @@
 # CSCI 441 Project 1 - The Maze
 
 
+
 # Building
 All of the following commands assume that you're in the `proj1` directory. You will need to run the following commands:
 
@@ -38,3 +39,8 @@ To run the program first navigate to the `build` directory. Then run the followi
 
 # Video
 A video of the maze program in action can be found [here](https://cloud.pallman.us/yAuvwnD1)!
+
+# Licence 
+[MIT](LICENSE)
+
+
