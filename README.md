@@ -1,5 +1,5 @@
 # CSCI 441 Project 1 - The Maze
-The Maze is a fun 3D-Maze that the user can traverse in either a first person prespective or from a birds eye view that is built using C++ and OpenGL! 
+The Maze is a fun 3D-Maze that the user can traverse in either a first person prespective or from a birds eye view that is built using C++ and OpenGL!
 
 
 # Building
@@ -9,7 +9,7 @@ All of the following commands assume that you're in the `proj1` directory. You w
     $ cd build
     $ cmake ..
     $ make
-    
+
 # Running the executable
 To run the program first navigate to the `build` directory. Then run the following command:
 
@@ -34,18 +34,17 @@ To run the program first navigate to the `build` directory. Then run the followi
 * ## Other
   * Quit: `escape` or `Q`
 
-# Image
-![birds-eye.png](./images/birds-eye.png)
+# Images
+![birdsEye.png](./images/birdsEye.png)
+![firstPerson.png](./images/firstPerson.png)
 
 # Video
-A video of the maze program in action can be found [here](https://cloud.pallman.us/yAuvwnD1)!
+A video of the maze program in action can be found [here](https://www.youtube.com/watch?v=yoXPKvwuuR8&feature=youtu.be)!
 
-# Contributers 
+# Contributers
 * [Ethan Miller](https://github.com/EthanMiller2)
 * [Alexander Pelaez](https://github.com/AlexPelaez)
 * [Ryan Pallman](https://github.com/cookieman768)
 
-# Licence 
+# Licence
 [MIT](LICENSE)
-
-
