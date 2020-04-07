@@ -7,6 +7,12 @@ All of the following commands assume that you're in the `proj1` directory. You w
     $ mkdir build
     $ cd build
     $ cmake ..
+    $ make
+    
+# Running the executable
+To run the program first navigate to the `build` directory. Then run the following command:
+
+    $ ./proj1
 
 # Controls
 * ## Movement
