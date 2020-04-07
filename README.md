@@ -40,6 +40,11 @@ To run the program first navigate to the `build` directory. Then run the followi
 # Video
 A video of the maze program in action can be found [here](https://cloud.pallman.us/yAuvwnD1)!
 
+# Contributers 
+[Ethan Miller](https://github.com/EthanMiller2)
+[Alexander Pelaez](https://github.com/AlexPelaez)
+[Ryan Pallman](https://github.com/cookieman768)
+
 # Licence 
 [MIT](LICENSE)
 
